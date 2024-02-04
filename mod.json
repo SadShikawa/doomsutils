@@ -1,7 +1,10 @@
 {
-	"geode": "2.0.0-beta.12",
-	"gd": "2.204",
-	"version": "v1.0.0",
+	"geode": "2.0.0-beta.14",
+	"gd": {
+		"win": "2.204",
+		"android": "2.205"
+	},
+	"version": "v1.0.1",
 	"id": "doom.doomsutils",
 	"name": "dooms utils",
 	"developer": "doom",
@@ -15,6 +18,18 @@
         "icon-hack": {
             "name": "Icon hack",
             "description": "Unlocks all icons",
+            "type": "bool",
+            "default": true
+        },
+        "practice-music-hack": {
+            "name": "Practice music hack",
+            "description": "Unlocks music in practice\nMake sure to enable it in the settings.",
+            "type": "bool",
+            "default": true
+        },
+        "music-customizer-hack": {
+            "name": "Music customizer hack",
+            "description": "Unlocks the music customizer.",
             "type": "bool",
             "default": true
         },

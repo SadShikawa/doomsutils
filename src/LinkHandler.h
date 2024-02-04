@@ -9,5 +9,4 @@ public:
         cocos2d::CCApplication::sharedApplication()->openURL("https://twitter.com/robtopgames");
     }
 };
-
 #endif // LINK_HANDLER_H

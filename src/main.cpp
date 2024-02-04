@@ -5,11 +5,11 @@
 #include <Geode/modify/GameStatsManager.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/OptionsLayer.hpp>
+#include <Geode/ui/GeodeUI.hpp>
 #include <Geode/utils/web.hpp>
 #include <UIBuilder.hpp>
 #include "LinkHandler.h"
 #include "saving.h"
-#include "shellapi.h"
 
 
 using namespace geode::prelude;
@@ -96,11 +96,14 @@ class $modify(MenuLayer) {
 				.parent(moregamesmenu)
 				.id("search-menu"_spr);
 		}
+
 		moregamesmenu->updateLayout();
 		socialmediamenu->updateLayout();
 		return true;
 	};
 };    
+
+
 
 
 // icon hack aka more stealing thanks whoever made this
@@ -111,15 +114,15 @@ class $modify (GameStatsManager) {
 
 		if (type == UnlockType::GJItem)
 		{
-			if (id == 18 || id == 20)
-				return true;
+			if (id == 18 || id == 20) // ???????????????????
+				return false;
 		}
 		
-		if (id == 16)
-		{
-			return true;
+		if (id == 16 && Mod::get()->getSettingValue<bool>("music-customizer-hack") == true) // music customizer
+		{ 
+			return true; 
 		}
-		else if (id == 17)
+		else if (id == 17 && Mod::get()->getSettingValue<bool>("practice-music-hack") == true) // practice music hack
 		{
 			return true;
 		}

@@ -23,6 +23,7 @@ void Saving::saveIcons()
 	Mod::get()->setSavedValue<int>("icons/shipfire", GameManager::get()->m_playerShipFire);
 	Mod::get()->setSavedValue<int>("icons/death", GameManager::get()->m_playerDeathEffect);
 	Mod::get()->setSavedValue<int>("icons/jetpack", GameManager::get()->m_playerJetpack);
+	Mod::get()->setSavedValue<int>("icons/glow", GameManager::get()->m_playerGlow);
 }
 
 void Saving::loadIcons()
@@ -43,6 +44,9 @@ void Saving::loadIcons()
 	GameManager::get()->m_playerShipFire = Settings::get<int>("icons/shipfire", GameManager::get()->m_playerShipFire);
 	GameManager::get()->m_playerDeathEffect = Settings::get<int>("icons/death", GameManager::get()->m_playerDeathEffect);
 	GameManager::get()->m_playerJetpack = Settings::get<int>("icons/jetpack", GameManager::get()->m_playerJetpack);
+	GameManager::get()->m_playerDeathEffect = Settings::get<int>("icons/death", GameManager::get()->m_playerDeathEffect);
+	GameManager::get()->m_playerJetpack = Settings::get<int>("icons/jetpack", GameManager::get()->m_playerJetpack);
+	GameManager::get()->m_playerGlow = Settings::get<int>("icons/glow", GameManager::get()->m_playerGlow);
 }
-
 // tell maxnut his saving code works well
+// nvm had to fix
