@@ -9,6 +9,7 @@
 	"name": "dooms utils",
 	"developer": "doom",
 	"description": "small dooms utils he made for no one",
+    "repository": "https://github.com/SadShikawa/doomsutils",
 	"resources": {
 		"sprites": [
 			"resources/DU_twitterBtn.png"
