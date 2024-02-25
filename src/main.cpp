@@ -35,9 +35,15 @@ class $modify(MenuLayer) {
 		socialmediamenu->setScale(0.9);
 		// get discord
 		auto discordbutton = socialmediamenu->getChildByID("discord-button");
+		// get fb
+		auto fbbutton = socialmediamenu->getChildByID("facebook-button");
+		// get twitter
+		auto twitterbutton = socialmediamenu->getChildByID("twitter-button");
 		// move discord button and social media menu parent
 		discordbutton->setPosition(30, 30);
-		socialmediamenu->setPosition(30, -20);
+		fbbutton->setPosition(-27, 30);
+		twitterbutton->setPosition(1.5, 30);
+		socialmediamenu->setPosition(59, -6);
 		
 		// moves the player button thing with username
 		auto profilemenu = this->getChildByID("profile-menu");
@@ -47,9 +53,8 @@ class $modify(MenuLayer) {
 		profilename->setPosition(61, 105);
 
 
-		// remove more games
 		auto moregamesmenu = this->getChildByID("more-games-menu");
-		moregamesmenu->getChildByID("more-games-button")->setVisible(false);
+
 
 
 		// CHANG twitter
@@ -73,32 +78,49 @@ class $modify(MenuLayer) {
 
 		};
 
-		// get settings stuff
-		auto mainmenubutton = Mod::get()->getSettingValue<bool>("main-menu");
+		// shortcut button
 
-		if (mainmenubutton == true){
-			auto create = Build<CCSprite>::createSpriteName("GJ_createBtn_001.png")
+		auto shortcutmenu = Build<CCMenu>::create()
+			.pos(winSize.width - 200, 12)
+			.scale(0.75f)
+			.contentSize({250.000f, 104.500f})
+			.anchorPoint({0, 0})
+			.parent(this)
+			.layout(
+				RowLayout::create()
+				->setAxisAlignment(AxisAlignment::End)
+				->setGrowCrossAxis(true)
+				->setAxisReverse(true)
+				)
+			.id("shortcut-menu"_spr)
+			.collect();
+			bool Size = false;
+		if (Mod::get()->getSettingValue<bool>("main-menu")) {
+			auto Button = Build<CCSprite>::createSpriteName("GJ_createBtn_001.png")
 				.intoMenuItem([](auto target) {
-					CreatorLayer::create()->onMyLevels(target);
+					CreatorLayer::create()->onSavedLevels(target);
 				})
-				.scale(0.75f)
-				.pos(30, 20)
-				.parent(moregamesmenu)
+				.pos(0, 0)
+				.parent(shortcutmenu)
 				.id("create-menu"_spr);
 		}
 		else {
-			auto create = Build<CCSprite>::createSpriteName("GJ_searchBtn_001.png")
+			auto Button = Build<CCSprite>::createSpriteName("GJ_searchBtn_001.png")
 				.intoMenuItem([](auto target) {
 					CreatorLayer::create()->onOnlineLevels(target);
 				})
-				.scale(0.75f)
-				.pos(30, 20)
-				.parent(moregamesmenu)
+				.pos(0, 0)
+				.parent(shortcutmenu)
 				.id("search-menu"_spr);
+		}
+		// remove more games
+		if(Loader::get()->isModLoaded("blackholemx.nomoregames") == false) {
+			moregamesmenu->getChildByID("more-games-button")->removeFromParentAndCleanup(true);
 		}
 
 		moregamesmenu->updateLayout();
 		socialmediamenu->updateLayout();
+		shortcutmenu->updateLayout();
 		return true;
 	};
 };    
@@ -114,7 +136,7 @@ class $modify (GameStatsManager) {
 
 		if (type == UnlockType::GJItem)
 		{
-			if (id == 18 || id == 20) // ???????????????????
+			if ((id == 18 || id == 20) && Mod::get()->getSettingValue<bool>("icon-hack") == true) // ???????????????????
 				return false;
 		}
 		

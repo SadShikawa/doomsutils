@@ -13,6 +13,7 @@ add_library(${PROJECT_NAME} SHARED
 	src/LinkHandler.h
 	src/saving.h
 	src/Settings.hpp
+	src/editorstuff.cpp
     # Add your cpp files here
 )
 
