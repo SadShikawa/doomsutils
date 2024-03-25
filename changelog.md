@@ -1,5 +1,10 @@
 # changelog :3
 
+## 1.0.3
+
+ * mod compatibility
+ * yeah
+
 ## 1.0.2
 
  * fixed UI
